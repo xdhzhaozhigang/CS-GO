@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="./jquery1.4.2.js"></script>
+	</head>
+	<body>
+		<div id="d1" style="width:200px;height:200px;background:red;display: none;"></div>
+		<div id="d2" style="width:100px;height:100px;background:blue;position:absolute;">
+			some text
+		</div>
+		<p>
+			<input type="button" value="show" />
+			<input type="button" value="hide" />
+			<input type="button" value="toggle" />
+			<input type="button" value="slideDown" />
+			<input type="button" value="slideUp" />
+			<input type="button" value="slideToggle" />
+			<input type="button" value="fadeIn" />
+			<input type="button" value="fadeOut" />
+			<input type="button" value="animate" />
+		</p>
+		<script>
+			$(function(){
+				$("input[value=show]").click(function(){
+					$("#d1").show("slow",function(){
+						alert("DONE");
+						$(this).css("backgroundColor","yellow");
+					});
+				});
+				$("input[value=hide]").click(function(){
+					$("#d1").hide(3000,function(){
+						$(this).css("display","block");
+					});
+				})
+				$("input[value=toggle]").click(function(){
+					$("#d1").toggle(3000);
+				})
+				$("input[value=slideDown]").click(function(){
+					$("#d1").slideDown(3000);
+				})
+				$("input[value=slideUp]").click(function(){
+					$("#d1").slideUp(3000);
+				})
+				$("input[value=slideToggle]").click(function(){
+					$("#d1").slideToggle(3000);
+				})
+				$("input[value=fadeIn]").click(function(){
+					$("#d1").fadeIn(5000);
+				})
+				$("input[value=fadeOut]").click(function(){
+					$("#d1").fadeOut(5000);
+				})
+				$("input[value=animate]").click(function(){
+					//使用animate自定义过度动画效果  它提供设置css动画的样式
+					$("#d2").animate({ 
+						left : 500,
+						top :300,
+						width :200,
+						height :200,
+						fontSize:30
+					},3000);
+				})
+			})
+		</script>
+	</body>
+</html>

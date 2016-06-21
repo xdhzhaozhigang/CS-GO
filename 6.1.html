@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>JQ ajax封装</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<script>
+			function ajax(0){
+				//发送请求
+				var request = new XMLHttpRequest();
+				if(o.type == "get"){
+					request.open("get",o.url + "?" + o.data);
+					request.send(null);
+				}else if(o.type =="post"){
+					request.open("post",o.url);
+					request.setRequestHeader("Contet-type","application/x-www-form-urlencoded");
+					request.send(o.data);
+				}
+				//注册onloadend事件
+				request.onloadend = function(){
+					if(o.dataType =="json"){
+						var result =eval("(" + request.responseText + ")");
+					}else if(o.dataType =="string"){
+						var result = request.responseText;
+					}
+					o.success(result);
+				}
+			}
+			//使用封装ajax实现查询数据库
+			ajax({
+				type : "get",
+				url : "index.php",
+				data : "id=8686",
+				dataType : "json",
+				success : function(result){
+					alert(result);
+				}
+			})
+		</script>
+	</body>
+</html>

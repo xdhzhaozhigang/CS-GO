@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="./jquery1.4.2.js"></script>
+	</head>
+	<body>
+		<img src="./0065_340_8_Saint.jpg" width="200" />
+		<img src="./Meinv059.jpg" width="200" />
+		<input type="button" value="设置样式" />
+		<script>
+			$(function(){
+				$("input:button").click(function(){
+					//读取宽度的属性值
+				//	alert($("img").css("width"));
+				//设置属性值
+				//$("img").css("width",300);
+				//设置多个样式
+				//$("img").css({
+				//	width :400,
+				//	height:100,
+			//		border : '1px solid red'
+			//	});
+				//设置函数的参数值
+				//$("img").css("width",function(idx,w){
+				//	return parseInt(w)*5 + "px";
+			//	})
+			//高度和宽度支持专门的方法
+			$("img").width(100);
+				})
+			})
+		</script>
+	</body>
+</html>

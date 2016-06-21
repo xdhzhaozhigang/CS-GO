@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+--Copyright(c)2016 All rights reserved.
+--@Licenced  http://www.w3.org
+--@Author  liutian<1538731090@qq.com> liutian_jiayi
+--@Create on 2016-6-12 11:02:59
+--@Version 1.0
+-->
+<html>
+	<head>
+		<title>JQ ajax封装</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<script>
+			function ajax (o){
+				//发送请求
+				var request = new XMLHttpRequest();
+				if(o.type == "get"){
+					request.open("get",o.url + "?" + o.data);
+					request.send(null);
+				}else if (o.type =="post"){
+					request.open("post",o.url);
+					request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					request.send(o.data);
+				}
+				//注册onloadend事件
+				requese.onloadend =function(){
+					if(o.dataType == "json"){
+						var result = eval("(" + request.responseText + ")"); 
+					}else if (o.dataType == "string"){
+						var result = request.responseText;
+					}
+					o.success(result);
+				}
+			}
+			//使用封装ajax实现查询数据库
+			ajax ({
+				type : "get",
+				url : "index.php",
+				data: "id=8686",
+				dataType : "json",
+				success:function(result){
+					alert(result);
+				}
+			})
+		</script>
+	</body>
+</html>

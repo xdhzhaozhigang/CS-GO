@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>jquery dom节点操作</title>
+		<meta charset="UTF-8">
+		<script src="./jquery-2.0.2.min.js"></script>
+		<style>
+			.submenu { color:red; }
+			.menu {
+				list-style:circle inside none;
+				font:italic bold 15px Monaco;
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>list item1</li>
+			<li class="menu">list item2</li>
+			<li>list item3</li>
+		</ul>
+		<hr color="red" />
+		<input type="button" value="使用APPEND追加文档元素" />
+		<input type="button" value="使用appendTo追加文档元素" />
+		<input type="button" value="使用PREPEND前置文档元素" />
+		<input type="button" value="使用prependTo前置文档元素" />
+		<input type="button" value="使用after在当前元素后面加入内容" />
+		<input type="button" value="使用before在当前元素前面加入内容" />
+		<input type="button" value="使用remove删除当前选中的文档元素" />
+		<input type="button" value="使用clone克隆节点" />
+		<script>
+			$(function(){
+				$("input:button[value*='APPEND']").click(function(){
+					$("ul").append($("hr"));
+				});
+				$("input:button[value*='appendTo']").click(function(){
+					$("ul").appendTo($("hr"));
+				});
+				$("input:button[value*='PREPEND']").click(function(){
+					$("ul").prepend($("hr"));
+				});
+				$("input:button[value*='prependTo']").click(function(){
+					$("ul").prependTo($("hr"));
+				});
+				$("input:button[value*='after']").click(function(){
+					$("ul li").last().after($("hr"));
+				});
+				$("input:button[value*='before']").click(function(){
+					$("ul li").first().before($("hr"));
+				});
+				$("input:button[value*='remove']").click(function(){
+					$("ul li").eq(1).remove();
+				});
+				$("input:button[value*='clone']").click(function(){
+				//	$("ul").prepend($("hr").clone());
+					$("ul li").first().before($("hr").clone());
+				})
+			})
+		</script>
+	</body>
+</html>

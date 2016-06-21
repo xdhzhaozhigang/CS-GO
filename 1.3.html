@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+--Copyright(c)2016 All rights reserved.
+--@Licenced  http://www.w3.org
+--@Author  liutian<1538731090@qq.com> liutian_jiayi
+--@Create on 2016-6-12 9:01:20
+--@Version 1.0
+-->
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<script src="./jquery-2.0.2.min.js"></script>
+	</head>
+	<body>
+		<ul>
+			<li  class="menu">Hello 1</li>
+			<li>Hello 2</li>
+			<li>Hello 3</li>
+		</ul>
+		<ul>
+			<li>world</li>
+			<li>world</li>
+			<li>world3</li>
+		</ul>
+		<div><b>b</b><u>u</u><span>span</span>
+		</div>
+		
+		<input type="button" value="使用first定位选中元素的第一个" />
+		<input type="button" value="使用last定位选中元素的最后一个" />
+		<input type="button" value="使用eq定位文档元素" />
+		<input type="button" value="使用hasClass判断选中元素是否有某个类名" />
+		<input type="button" value="使用HAS判断选中元素是否有某个后代元素" />
+		<input type="button" value="使用not过滤掉指定的选择器" />
+		<input type="button" value="使用find查找已选中元素里面的指定的选择器" />
+		<input type="button" value="使用contents获取所有子节点" />
+		
+		<script>
+			$(function(){
+				$("input:button[value*='first']").click(function(){
+					alert($("ul li").first().html());
+				});
+				$("input:button[value*='last']").click(function(){
+					alert($("ul li").last().html());
+				});
+				$("input:button[value*='eq']").click(function(){
+					alert($("ul li").eq(1).html());
+				});
+				$("input:button[value*='hasClass']").click(function(){
+					alert($("ul li").hasClass("menu"));
+				});
+				$("input:button[value*='HAS']").click(function(){
+					alert($("ul").has($(".menu")).html());
+				});
+				$("input:button[value*='not']").click(function(){
+					alert($("ul li").not($(".menu")).html());
+				});
+				$("input:button[value*='find']").click(function(){
+					alert($("div").find("u").html());
+				})
+				$("input:button[value*='contents']").click(function(){
+					alert($("div").contents().eq(2).html());//所有的子节点 包括文本节点
+				})
+			})
+		</script>
+	</body>
+</html>
